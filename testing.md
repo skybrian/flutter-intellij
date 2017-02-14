@@ -4,16 +4,16 @@ Manual tests to execute before plugin releases.
 
 ## Setup
 
-Pre-reqs: [flutter setup](https://flutter.io/setup/) and
-[flutter getting started](https://flutter.io/getting-started/).
+Pre-reqs: Run through the [flutter setup](https://flutter.io/setup/) and
+[flutter getting started](https://flutter.io/getting-started/) guides.
 
-*Note*: Make sure that flutter is fully up-to-datel; run `flutter upgrade` in a terminal to get the latest version prior to starting testing.
+* Run `flutter upgrade` in a terminal to get the latest version prior to starting testing.
 
 ## Project Creation
 
 Validate basic project creation.
 
-* Create a simple project (`File > New > Project…`, pick `Flutter`).
+* Create a simple project (`File > New > Project...`, pick `Flutter`).
 * Confirm that:
   * Project contents are created.
     * Verify that a run configuration (sharing the project name) is enabled in the
@@ -54,7 +54,7 @@ Validate device selection.
 Validate basic application running and debugging.
 
 In the newly created app:
-* plugin in an Android device, or open the iOS Simulator
+* plugin in an Android device (or open the iOS Simulator)
 * set a breakpoint on the `_counter++` line
 * hit the `'debug'` icon to start the app running
 * verify the app appears on the device
@@ -70,8 +70,8 @@ In the newly created app:
 Validate basic hot reload functionality.
 
 Assuming the app state from above (i.e., leave the Debug session running):
-* change the `Button tapped ... times.` line to end in an exclamation point
-* change the `_counter++` line to `_counter--` to end in an exclamation point
+* change the `'Button tapped ... times.'` line to end in an exclamation point
+* change the `_counter++` line to `_counter--`
 * hit the hot reload button in the debugger UI
 * validate that
   1. the state persisted (the same number of clicks in the UI), and
@@ -91,6 +91,18 @@ Validate that a sequence of sessions works as expected.
 After testing the above, terminate your debugging session and start another.
 * validate that a breakpoint is hit
 * verify that the reload keybinding works as expected
+
+## Project Open Verification
+
+Verify that projects without Flutter project metadata open properly and are given the Flutter module type.
+
+* create a new Flutter project and delete IntelliJ metadata:
+  * `flutter create foo_bar`
+  * `cd foo_bar`
+  * `rm -rf .idea`
+  * `rm foo_bar.iml`
+* open project ("File > Open")
+* verify that the project has the Flutter module type (the device pull-down displays) and analyzes cleanly
 
 ## Fresh Install Configuration
 
